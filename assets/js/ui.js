@@ -23,6 +23,8 @@ export default class UI {
 
                     <td>${contacto.nombre_categoria}</td>
 
+                    <td>${contacto.valor}</td>
+
                     <td>
 
                         <button
