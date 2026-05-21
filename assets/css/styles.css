@@ -1,69 +1,19 @@
 body{
-    background: linear-gradient(135deg, #eef2ff, #f8fafc);
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
+    background: #f4f7fa;
 }
-
-/* NAVBAR */
-
-.custom-navbar{
-    background: linear-gradient(90deg, #0f172a, #1e293b);
-}
-
-/* TITULO */
-
-.title-app{
-    color: #0f172a;
-}
-
-/* TABLA */
 
 table{
     background: white;
 }
 
-table thead{
-    letter-spacing: 1px;
+.modal-content{
+    border-radius: 15px;
 }
-
-table tbody tr:hover{
-    transform: scale(1.01);
-    transition: 0.2s ease;
-}
-
-/* INPUTS */
-
-.custom-input{
-    border-radius: 12px;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    transition: all .3s ease;
-}
-
-.custom-input:focus{
-    border-color: #3b82f6;
-    box-shadow: 0 0 10px rgba(59,130,246,.3);
-}
-
-/* BOTONES */
 
 .btn{
-    border-radius: 12px;
-    transition: all .3s ease;
+    border-radius: 10px;
 }
 
-.btn:hover{
-    transform: translateY(-2px);
-}
-
-/* MODALES */
-
-.modal-content{
-    border-radius: 20px;
-}
-
-/* FOOTER */
-
-.footer-custom{
-    background: linear-gradient(90deg, #0f172a, #1e293b);
+footer{
+    margin-top: 100px;
 }
