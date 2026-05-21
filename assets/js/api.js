@@ -1,66 +1,52 @@
 const API =
 "https://gerardosilvaescorza22201128.com/backend-contactos/index.php";
 
-export default class APIService {
+export async function obtenerContactos(){
 
-    static async obtenerContactos(){
+    const respuesta = await fetch(API_URL);
 
-        const response = await fetch(
-            `${API}?action=recientes&limite=100`
-        );
+    return await respuesta.json();
 
-        return await response.json();
+}
 
-    }
+export async function agregarContacto(contacto){
 
-    static async agregarContacto(data){
+    await fetch(API_URL, {
 
-        await fetch(`${API}?action=agregar`,{
+        method: "POST",
 
-            method: "POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+        body: JSON.stringify(contacto)
 
-            body: JSON.stringify(data)
+    });
 
-        });
+}
 
-    }
+export async function actualizarContacto(id, contacto){
 
-    static async actualizarContacto(data){
+    await fetch(`${API_URL}/${id}`, {
 
-        await fetch(`${API}?action=actualizar`,{
+        method:"PUT",
 
-            method:"PUT",
+        headers:{
+            "Content-Type":"application/json"
+        },
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+        body: JSON.stringify(contacto)
 
-            body: JSON.stringify(data)
+    });
 
-        });
+}
 
-    }
+export async function eliminarContacto(id){
 
-    static async eliminarContacto(id_contacto){
+    await fetch(`${API_URL}/${id}`, {
 
-        await fetch(`${API}?action=eliminar`,{
+        method:"DELETE"
 
-            method:"DELETE",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body: JSON.stringify({
-                id_contacto
-            })
-
-        });
-
-    }
+    });
 
 }

@@ -1,51 +1,44 @@
-export default class UI {
+export function mostrarContactos(contactos){
 
-    static mostrarContactos(contactos){
+    const tabla = document.getElementById("tablaContactos");
 
-        const tabla = document.getElementById("tablaContactos");
+    tabla.innerHTML = "";
 
-        tabla.innerHTML = "";
+    contactos.forEach(contacto => {
 
-        contactos.forEach(contacto => {
+        tabla.innerHTML += `
 
-            tabla.innerHTML += `
+            <tr>
 
-                <tr>
+                <td>${contacto.id_contacto}</td>
+                <td>${contacto.nombre}</td>
+                <td>${contacto.apellido}</td>
+                <td>${contacto.nombre_categoria}</td>
 
-                    <td>${contacto.id_contacto}</td>
-                    <td>${contacto.nombre}</td>
-                    <td>${contacto.apellido}</td>
-                    <td>${contacto.fecha_registro}</td>
-                    <td>${contacto.id_contacto}</td>
+                <td>
 
-                    <td>
+                    <button
+                        class="btn btn-warning btn-sm editar"
+                        data-id="${contacto.id_contacto}">
 
-                        <button class="btn btn-warning btn-sm btnEditar"
-                            data-id="${contacto.id_contacto}"
-                            data-bs-toggle="modal"
-                            data-bs-target="#modalActualizar">
+                        <i class="fa-solid fa-pen"></i>
 
-                            <i class="bi bi-pencil-square"></i>
+                    </button>
 
-                        </button>
+                    <button
+                        class="btn btn-danger btn-sm eliminar"
+                        data-id="${contacto.id_contacto}">
 
-                        <button class="btn btn-danger btn-sm btnEliminar"
-                            data-id="${contacto.id_contacto}"
-                            data-bs-toggle="modal"
-                            data-bs-target="#modalEliminar">
+                        <i class="fa-solid fa-trash"></i>
 
-                            <i class="bi bi-trash-fill"></i>
+                    </button>
 
-                        </button>
+                </td>
 
-                    </td>
+            </tr>
 
-                </tr>
+        `;
 
-            `;
-
-        });
-
-    }
+    });
 
 }

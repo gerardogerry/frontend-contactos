@@ -1,79 +1,76 @@
-import APIService from "./api.js";
-import UI from "./ui.js";
+import {
+    obtenerContactos,
+    agregarContacto,
+    actualizarContacto,
+    eliminarContacto
+}
+from "./api.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
+import {
+    mostrarContactos
+}
+from "./ui.js";
 
-    cargarContactos();
+const form = document.getElementById("formContacto");
 
-});
+async function cargarDatos(){
 
-async function cargarContactos(){
+    const contactos = await obtenerContactos();
 
-    const contactos = await APIService.obtenerContactos();
-
-    UI.mostrarContactos(contactos);
+    mostrarContactos(contactos);
 
 }
 
-// ==========================================
-// AGREGAR
-// ==========================================
+cargarDatos();
 
-document
-.getElementById("formAgregar")
-.addEventListener("submit", async e => {
+form.addEventListener("submit", async(e)=>{
 
     e.preventDefault();
 
-    const data = {
+    const id = document.getElementById("id_contacto").value;
 
-        nombre:
-        document.getElementById("nombre").value,
+    const contacto = {
 
-        apellido:
-        document.getElementById("apellido").value,
+        nombre: document.getElementById("nombre").value,
 
-        fecha_nacimiento:
-        document.getElementById("fecha_nacimiento").value,
+        apellido: document.getElementById("apellido").value,
 
-        id_categoria:
-        document.getElementById("id_categoria").value
+        id_categoria: document.getElementById("id_categoria").value
 
     };
 
-    await APIService.agregarContacto(data);
+    if(id){
 
-    location.reload();
+        await actualizarContacto(id, contacto);
 
-});
+    }else{
 
-// ==========================================
-// ELIMINAR
-// ==========================================
-
-document.addEventListener("click", e => {
-
-    if(e.target.closest(".btnEliminar")){
-
-        const id =
-        e.target.closest(".btnEliminar")
-        .dataset.id;
-
-        document.getElementById("delete_id").value = id;
+        await agregarContacto(contacto);
 
     }
 
+    form.reset();
+
+    cargarDatos();
+
 });
 
-document
-.getElementById("btnEliminar")
-.addEventListener("click", async ()=>{
+document.addEventListener("click", async(e)=>{
 
-    const id =
-    document.getElementById("delete_id").value;
+    if(e.target.closest(".eliminar")){
 
-    await APIService.eliminarContacto(id);
+        const id = e.target.closest(".eliminar").dataset.id;
 
-    location.reload();
+        const confirmar = confirm("¿Eliminar contacto?");
+
+        if(confirmar){
+
+            await eliminarContacto(id);
+
+            cargarDatos();
+
+        }
+
+    }
 
 });

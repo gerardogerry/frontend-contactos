@@ -1,18 +1,11 @@
-export default class Contacto {
+export default class Contacto{
 
-    constructor(
-        id_contacto,
-        nombre,
-        apellido,
-        fecha_nacimiento,
-        id_categoria
-    ){
+    constructor(id, nombre, apellido, categoria){
 
-        this.id_contacto = id_contacto;
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.id_categoria = id_categoria;
+        this.categoria = categoria;
 
     }
 

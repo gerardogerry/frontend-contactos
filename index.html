@@ -2,25 +2,19 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Gestión de Contactos</title>
+    <title>Agenda de Contactos</title>
 
-    <!-- FAVICON -->
-    <link rel="icon" href="./assets/img/favicon.ico">
+    <link rel="icon" href="assets/img/favicon.ico">
 
-    <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
     <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/styles.css">
-
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
@@ -28,16 +22,13 @@
     <!-- NAVBAR -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-
         <div class="container">
 
             <a class="navbar-brand fw-bold" href="#">
-                <i class="bi bi-person-lines-fill"></i>
-                Gestión de Contactos
+                Agenda Contactos
             </a>
 
         </div>
-
     </nav>
 
     <!-- CONTENIDO -->
@@ -46,13 +37,17 @@
 
         <div class="d-flex justify-content-between align-items-center mb-4">
 
-            <h2 class="fw-bold">Lista de Contactos</h2>
+            <h2 class="fw-bold">
+                Gestión de Contactos
+            </h2>
 
-            <button class="btn btn-primary shadow" data-bs-toggle="modal"
-                data-bs-target="#modalAgregar">
+            <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#modalContacto">
 
-                <i class="bi bi-plus-circle"></i>
-                Agregar Contacto
+                <i class="fa-solid fa-plus"></i>
+                Agregar
 
             </button>
 
@@ -62,7 +57,7 @@
 
         <div class="table-responsive shadow rounded">
 
-            <table class="table table-hover align-middle text-center">
+            <table class="table table-hover align-middle">
 
                 <thead class="table-dark">
 
@@ -70,16 +65,13 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Fecha Nacimiento</th>
                         <th>Categoría</th>
                         <th>Acciones</th>
                     </tr>
 
                 </thead>
 
-                <tbody id="tablaContactos">
-
-                </tbody>
+                <tbody id="tablaContactos"></tbody>
 
             </table>
 
@@ -87,155 +79,83 @@
 
     </div>
 
-    <!-- MODAL AGREGAR -->
+    <!-- MODAL -->
 
-    <div class="modal fade" id="modalAgregar">
-
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-
-                <div class="modal-header bg-primary text-white">
-
-                    <h5 class="modal-title">
-                        Agregar Contacto
-                    </h5>
-
-                    <button class="btn-close btn-close-white"
-                        data-bs-dismiss="modal"></button>
-
-                </div>
-
-                <div class="modal-body">
-
-                    <form id="formAgregar">
-
-                        <input type="text"
-                            id="nombre"
-                            class="form-control mb-3"
-                            placeholder="Nombre"
-                            required>
-
-                        <input type="text"
-                            id="apellido"
-                            class="form-control mb-3"
-                            placeholder="Apellido"
-                            required>
-
-                        <input type="date"
-                            id="fecha_nacimiento"
-                            class="form-control mb-3"
-                            required>
-
-                        <input type="number"
-                            id="id_categoria"
-                            class="form-control mb-3"
-                            placeholder="ID Categoría"
-                            required>
-
-                        <button class="btn btn-primary w-100">
-                            Guardar
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- MODAL ACTUALIZAR -->
-
-    <div class="modal fade" id="modalActualizar">
+    <div class="modal fade" id="modalContacto" tabindex="-1">
 
         <div class="modal-dialog">
 
             <div class="modal-content">
 
-                <div class="modal-header bg-warning">
+                <div class="modal-header">
 
                     <h5 class="modal-title">
-                        Actualizar Contacto
+                        Contacto
                     </h5>
 
-                    <button class="btn-close"
-                        data-bs-dismiss="modal"></button>
-
-                </div>
-
-                <div class="modal-body">
-
-                    <form id="formActualizar">
-
-                        <input type="hidden" id="update_id">
-
-                        <input type="text"
-                            id="update_nombre"
-                            class="form-control mb-3"
-                            required>
-
-                        <input type="text"
-                            id="update_apellido"
-                            class="form-control mb-3"
-                            required>
-
-                        <input type="date"
-                            id="update_fecha"
-                            class="form-control mb-3"
-                            required>
-
-                        <input type="number"
-                            id="update_categoria"
-                            class="form-control mb-3"
-                            required>
-
-                        <button class="btn btn-warning w-100">
-                            Actualizar
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- MODAL ELIMINAR -->
-
-    <div class="modal fade" id="modalEliminar">
-
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-
-                <div class="modal-header bg-danger text-white">
-
-                    <h5 class="modal-title">
-                        Confirmar Eliminación
-                    </h5>
-
-                </div>
-
-                <div class="modal-body text-center">
-
-                    <p>
-                        ¿Deseas eliminar este contacto?
-                    </p>
-
-                    <input type="hidden" id="delete_id">
-
-                    <button class="btn btn-danger"
-                        id="btnEliminar">
-
-                        Eliminar
-
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
                     </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="formContacto">
+
+                        <input type="hidden" id="id_contacto">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="nombre"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Apellido
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="apellido"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Categoría
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="id_categoria"
+                                required>
+
+                        </div>
+
+                        <button class="btn btn-success w-100">
+
+                            Guardar
+
+                        </button>
+
+                    </form>
 
                 </div>
 
@@ -249,17 +169,16 @@
 
     <footer class="bg-dark text-white text-center p-3 mt-5">
 
-        <p class="mb-0">
-            Desarrollado por Gerardo Silva Escorza | Ingeniería en Sistemas
-        </p>
+        Programador:
+        Gerardo Silva Escorza
 
     </footer>
 
-    <!-- BOOTSTRAP -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+    </script>
 
-    <!-- JS -->
-    <script type="module" src="./assets/js/app.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
 
 </body>
 
