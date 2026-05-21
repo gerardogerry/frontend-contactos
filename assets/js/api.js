@@ -1,4 +1,5 @@
-const API = "http://localhost/backend-contactos/index.php";
+const API =
+"https://gerardosilvaescorza22201128.com/backend-contactos/index.php";
 
 export default class APIService {
 
