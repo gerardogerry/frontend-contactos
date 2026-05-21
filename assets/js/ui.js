@@ -26,14 +26,16 @@ export default class UI {
                     <td>
 
                         <button
-                            class="btn btn-warning btn-sm">
+                            class="btn btn-warning btn-sm rounded-pill btn-editar"
+                            data-id="${contacto.id_contacto}">
 
                             <i class="bi bi-pencil-square"></i>
 
                         </button>
 
                         <button
-                            class="btn btn-danger btn-sm">
+                            class="btn btn-danger btn-sm rounded-pill btn-eliminar"
+                            data-id="${contacto.id_contacto}">
 
                             <i class="bi bi-trash-fill"></i>
 
